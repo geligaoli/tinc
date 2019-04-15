@@ -8,9 +8,9 @@ ReloadPropagatedFrom=tinc.service
 
 [Service]
 Type=simple
-WorkingDirectory=@sysconfdir@/tinc/%i
-ExecStart=@sbindir@/tincd -n %i -D
-ExecReload=@sbindir@/tincd -n %i -kHUP
+WorkingDirectory=/usr/local/etc/tinc/%i
+ExecStart=/usr/local/sbin/tincd -n %i -D -L -U nobody --logfile %i.log
+ExecReload=/usr/local/sbin/tincd -n %i -kHUP
 KillMode=mixed
 Restart=on-failure
 RestartSec=5
